@@ -1,0 +1,81 @@
+site_name: UIS Course
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/images/favicon.png
+  custom_dir: docs/overrides
+  features:
+    - announce.dismiss
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand #自动展开目录
+    - toc.integrate #内容目录显示在左侧边栏
+    - toc.follow #内容目录随页面滚动
+    - navigation.path #m面包屑导航
+    - navigation.prune #reducing the size of the built site by 33% or more
+    - navigation.top #back to top button
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+
+  palette: 
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to system preference
+
+extra:
+  homepage: http://www.bjtuuis.cn/
+  generator: false
+  language: zh
+
+  social:
+    - icon: fontawesome/solid/school
+      link: https://mis.bjtu.edu.cn/home/
+      name: 北京交通大学信息门户
+    - icon: fontawesome/solid/circle-info
+      link: http://www.bjtuuis.cn/
+      name: UIS实验室
+
+  extra_css:
+    - stylesheets/custom.css
+
+  font:
+    font: false
+    text: Roboto
+    code: Roboto Mono
+
+copyright: Copyright &copy; 2025 UIS
+
+  # nav:
+  #   - UIS实验室开设的课程:index.md
+  #   - 软件系统分析与设计:
+  #     - 软件系统分析与设计/index.md
+  #     - 1.用户界面分析与设计: 用户界面分析与设计//ui.md
+  #   - 用户界面分析与设计:
+  #     - 用户界面分析与设计/index.md
+  #     - 1.用户界面分析与设计: 用户界面分析与设计//ui.md
+  #     - 2.名人堂: 用户界面分析与设计/hall.md
+
+plugins:
+  - search
+  # - tags:
+  #     tags_file: tags.md

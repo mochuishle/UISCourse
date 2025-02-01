@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion with Expanding Cards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+
+    .banner {
+      width: 90vw;
+      background-color: #C22636;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.8em;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-bottom: 1px;
+    }
+
+    .container {
+      display: flex;
+      width: 90vw;
+      height: 86vh;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card {
+      width: 50%;
+      height: 90%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      border-radius: 10px;
+      transition: width 0.3s ease, height 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+      background-color: rgb(253, 250, 250);
+      filter: brightness(1.0);
+    }
+
+    .card:nth-child(1) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-259561.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card:nth-child(2) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-908187.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card:nth-child(3) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-102119.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card h2 {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: white;
+      text-align: justify;
+      margin-left: 9vw;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card p {
+      font-size: 1.2em;
+      font-weight: normal;
+      margin-top: 10px;
+      display: none;
+      color: white;
+      text-align: justify;
+      margin-left: 9vw;
+      margin-right: 6vw;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .card.expanded p {
+      display: block;
+    }
+
+    /* Keyframes for fading and sliding text */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card.expanded {
+      width: 90%;
+      height: 90%;
+    }
+
+    .card:not(.expanded) {
+      filter: brightness(0.7);
+    }
+
+    .card.expanded h2 {
+      transition-delay: 1.5s; 
+    }
+    .card:not(.expanded) h2 {
+      text-align: center; /* 收缩时标题居中 */
+      margin-left: 0; /* 收缩时去掉左边距 */
+    }
+
+    .card:not(.expanded):hover {
+      background-color: rgba(41, 128, 185, 0.7);
+    }
+
+    .card.expanded:hover {
+      background-color: rgba(41, 128, 185, 0.7);
+    }
+
+    .circle {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 1.2s ease-out;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(0.22);
+        opacity: 0;
+      }
+    }
+
+    a.download-link {
+      color: #ffffff;
+    }
+
+    a.download-link:hover {
+      color: #C22636;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    某个平行时空里的"软件系统分析与设计"课程
+  </div>
+  <div class="container">
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>走进课程</h2>
+      <p><strong>为什么需要“软件系统分析与设计(S.A.D.)”这门课？</strong></p>
+      <p>假设现在让你设计一个“以朋友圈为核心业务的巨信Mega-wechat”，你会从哪里着手？</p>
+      <p>也许你可以手撕出leetcode上的困难题，但这只代表能力的冰山一角。如果想更好的提升自己的整体水平，想从别人嘴中听到“ta还是太全面了”。那么，你还需要具备系统化思维，面对业务问题时，能够理解需求，拆解问题，设计出高效、可行的解决方案。良好的逻辑思维和问题解决能力能让你更闪耀。</p>
+    </div>
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>课程资源</h2>
+      <p>你可以查看过去三年的期末试题，从而：</p>
+      <p>• 了解期末考试题目的类型</p>
+      <p>• 确定自己需要准备的方向</p>
+      <p>但请记得学习的目的不是为了考试。</p>
+      <p>• 2021-2022(2) <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末A卷</a> <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末B卷</a></p>
+      <p>• 2022-2023(2) <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末A卷</a> <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末B卷</a></p>
+      <p>• 2023-2024(2) <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末A卷</a> <a href="/3yearexam/exam-papers.pdf" download class="download-link">期末B卷</a></p>
+      <p>注:每年试题难度会有所调整。</p>
+    </div>
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>Q&A</h2>
+      <p>Q:作业写不完了怎么办？</p>
+      <p>A:你可以在截止时间前，通过邮件告知我们，从而获得48小时的延期豁免。</p>
+      <p>Q:作业写不完了怎么办？</p>
+      <p>A:你可以在截止时间前，通过邮件告知我们，从而获得48小时的延期豁免。</p>
+      <p>Q:作业写不完了怎么办？</p>
+      <p>A:你可以在截止时间前，通过邮件告知我们，从而获得48小时的延期豁免。</p>
+    </div>
+  </div>
+
+  <script>
+    // Function to handle card expansion
+    function expandCard(card, event) {
+    const cards = document.querySelectorAll('.card');
+    const paragraphs = card.querySelectorAll('p'); // 获取该卡片内的所有<p>元素
+    const h2 = card.querySelector('h2'); // 获取<h2>元素
+    // 如果卡片已展开，则折叠它
+    if (card.classList.contains('expanded')) {
+      card.classList.remove('expanded');
+      paragraphs.forEach((p) => {
+        p.style.animation = '';  // 清除之前的动画
+        p.style.opacity = '0';  // 重置透明度
+        p.style.transform = 'translateY(20px)';  // 重置位置
+      });
+    } else {
+      // 折叠所有其他卡片
+      cards.forEach((c) => c.classList.remove('expanded'));
+      // 展开点击的卡片
+      card.classList.add('expanded');  
+      h2.style.animation = `fadeIn 0.5s ease-in 0s forwards`;
+      paragraphs.forEach((p, index) => {
+        const delay = index * 0.1;  // 动态计算每行文字的延迟
+        p.style.animation = `fadeIn 0.5s ease-in ${delay}s forwards`;  // 为每个段落设置延迟
+      });
+    }
+      
+        // Mouse click effect
+        createRipple(event);
+    }
+
+    // Function to create the ripple effect
+    function createRipple(event) {
+      const ripple = document.createElement('div');
+      ripple.classList.add('circle');
+
+      // Get mouse position relative to the clicked element
+      const rect = event.target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      event.target.appendChild(ripple);
+
+      // Remove the ripple after animation ends
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    }
+  </script>
+</body>
+</html>

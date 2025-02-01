@@ -1,0 +1,12 @@
+/* 确保 Footer 文字变小 */
+.custom-footer p {
+    font-size: 1400px !important;
+    color: #888 !important;
+    margin-left: 30px !important;
+}
+
+/* 让 Footer 整体左对齐 */
+.custom-footer {
+    text-align: left !important;
+    padding-left: 30px !important;
+}

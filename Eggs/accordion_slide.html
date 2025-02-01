@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accordion Slider</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .accordion {
+        box-sizing: border-box;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh; /* 自适应浏览器高度 */
+      }
+
+      .accordion-select {
+        cursor: pointer;
+        margin: 0;
+        opacity: 0;
+        z-index: 1;
+      }
+
+      .accordion-title {
+        position: relative;
+        background-color: #ffffff;
+        color: #7f8787; /* 默认字体颜色 */
+      }
+
+      .accordion-title:not(:nth-last-child(2))::after {
+        border: 1px solid transparent;
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .accordion-title span {
+        bottom: 0px;
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      .accordion-content {
+        box-sizing: border-box;
+        overflow: auto;
+        position: relative;
+        transition: margin-right 0.3s ease, opacity 0.3s ease;
+        margin-right: calc(-1 * calc(100% - 216px)); /* 默认折叠状态 */
+        opacity: 0; /* 默认透明 */
+        height: 100%;
+      }
+
+      .accordion-select:checked + .accordion-title + .accordion-content {
+        margin-right: 0; /* 展开状态 */
+        opacity: 1; /* 变为可见 */
+      }
+
+      .accordion-select:checked + .accordion-title {
+        background-color: #ffffff; /* 保持背景颜色 */
+        color: #000000; /* 改变字体颜色为黑色 */
+        font-weight: bold;
+      }
+
+      .accordion {
+        border-color: #dedede;
+        border-radius: 8px;
+        border-style: solid;
+        border-width: 22px;
+        flex-direction: row;
+      }
+
+      .accordion-title,
+      .accordion-select {
+        width: 72px;
+        height: 100%;
+        font-size: 2vw;
+      }
+
+      .accordion-select {
+        margin-bottom: -65px;
+        margin-right: -72px;
+      }
+
+      .accordion-title:not(:nth-last-child(2))::after {
+        border-bottom-color: transparent;
+        border-right-color: rgb(234, 234, 234);
+      }
+
+      .accordion-title span {
+        transform: rotate(-90deg);
+        -ms-writing-mode: lr-bt;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        padding-bottom: 36px;
+        padding-top: 36px;
+        line-height: 72px;
+      }
+
+      .accordion-content {
+        background-color: #f7f7f7;
+        color: #7f8787;
+        width: calc(100% - 216px);
+        text-align: center;
+      }
+
+      /* Image Styling */
+      .accordion-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+      /* Text Styling */
+      .accordion-content p {
+        color: white;
+        font-size: 3em;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="accordion">
+      <input type="radio" name="select" class="accordion-select" checked />
+      <div class="accordion-title"><span>课程信息</span></div>
+      <div class="accordion-content">
+        <img src="QQ9.jpg" alt="Image 1" />
+        <p>在这里列出课程相关的资源链接、书籍、论文或任何有用的学习材料。</p>
+      </div>
+      <input type="radio" name="select" class="accordion-select" />
+      <div class="accordion-title"><span>啊呜啊呜</span></div>
+      <div class="accordion-content">
+        <img src="P.S.loopy.png" alt="Image 2" />
+        <p>这是一个抓手。</p>
+      </div>
+      <input type="radio" name="select" class="accordion-select" />
+      <div class="accordion-title"><span>课程资源</span></div>
+      <div class="accordion-content">
+        <img src="P.S.loopy.png" alt="Image 3" />
+        <p>这是一个抓手。</p>
+      </div>
+    </div>
+  </body>
+</html>

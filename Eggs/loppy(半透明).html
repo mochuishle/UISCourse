@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion with Expanding Cards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent; /* Remove background color for the page */
+    }
+
+    .banner {
+      width: 90vw; /* Same width as the container */
+      background-color: #C22636; /* Banner background color */
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.8em;
+      font-weight: bold;
+      border-radius: 10px 10px 10px 10px;
+      margin-bottom: 1px; /* Space between banner and cards */
+    }
+
+    .container {
+      display: flex;
+      width: 90vw; /* Set container width to 90% of the viewport */
+      height: 86vh; /* Adjust height to leave space for banner */
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 5px; /* Add gap between cards */
+    }
+
+    .card {
+      width: 50%; /* Adjusted card width */
+      height: 90%; /* Keep the height the same */
+      margin: 0; /* Remove margin between cards */
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      color: white;
+      border-radius: 10px;
+      transition: width 0.3s ease, height 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: rgb(253, 250, 250); /* Fallback background */
+      filter: brightness(1.0); /* Slightly dim background when not expanded */
+    }
+
+    /* Background images for each card */
+    .card:nth-child(1) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-259561.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card:nth-child(2) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-908187.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card:nth-child(3) {
+      background-image: url('https://martubegift.com/cdn/shop/files/martube-x-loopy-bluetooth-speaker-wireless-102119.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card h2 {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .card .content-container {
+      font-size: 1.2em;
+      font-weight: normal;
+      margin-top: 10px;
+      display: none; /* Hide the content initially */
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .card.expanded {
+      width: 90%; /* Expands to 50% width when clicked */
+      height: 90%; /* Keep the height the same */
+    }
+
+    .card.expanded .content-container {
+      display: block; /* Show the content when expanded */
+    }
+
+    .card:not(.expanded) {
+      filter: brightness(0.7); /* Slightly dim background when not expanded */
+    }
+
+    .card:not(.expanded):hover {
+      background-color: rgba(41, 128, 185, 0.7); /* Hover effect for non-expanded cards */
+    }
+
+    .card.expanded:hover {
+      background-color: rgba(41, 128, 185, 0.7); /* Hover effect for expanded cards */
+    }
+
+    /* Mouse click effect styles */
+    .circle {
+      position: absolute;
+      border: 50px solid white;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 1.5s ease-out;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(0.22);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="banner">
+    某个平行时空里的"软件系统分析与设计"课程
+  </div>
+  <div class="container">
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>课程信息</h2>
+      <div class="content-container">
+        <p>欢迎来到卡片页面 1。</p>
+        <p>这里是一些示例内容。你可以将其替换为任何信息。</p>
+        <p>更多内容和文字可以放在这里，让页面看起来更加丰富。</p>
+      </div>
+    </div>
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>给我</h2>
+      <div class="content-container">
+        <p>这是卡片页面 2 的内容。</p>
+        <p>可以放任何你想要的信息，这里是一些模拟的文本。</p>
+        <p>你还可以添加图片、链接或其他元素来使页面更加生动。</p>
+      </div>
+    </div>
+    <div class="card" onclick="expandCard(this, event)">
+      <h2>课程资源</h2>
+      <div class="content-container">
+        <p>坏lllllooooooooooopy</p>
+        <p>这个页面的内容可以包括多个段落，甚至表格或其他组件。</p>
+        <p>尽情发挥创意来设计你自己的页面。</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to handle card expansion
+    function expandCard(card, event) {
+      const cards = document.querySelectorAll('.card');
+      
+      // If the card is already expanded, collapse it
+      if (card.classList.contains('expanded')) {
+        card.classList.remove('expanded');
+      } else {
+        // Collapse all other cards
+        cards.forEach((c) => c.classList.remove('expanded'));
+        // Expand the clicked card
+        card.classList.add('expanded');
+      }
+
+      // Mouse click effect
+      createRipple(event);
+    }
+
+    // Function to create the ripple effect
+    function createRipple(event) {
+      const ripple = document.createElement('div');
+      ripple.classList.add('circle');
+
+      // Get mouse position relative to the clicked element
+      const rect = event.target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      event.target.appendChild(ripple);
+
+      // Remove the ripple after animation ends
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    }
+  </script>
+</body>
+</html>
