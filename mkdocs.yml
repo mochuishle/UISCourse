@@ -78,5 +78,3 @@ copyright: Copyright &copy; 2024-2025 UIS <br> <a href="https://beian.mps.gov.cn
 
 plugins:
   - search
-  # - tags:
-  #     tags_file: tags.md
