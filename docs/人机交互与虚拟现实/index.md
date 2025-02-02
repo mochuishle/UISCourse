@@ -66,54 +66,61 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const aoeOffset = -12;
-            const aoeTime = new Date(now.getTime() + aoeOffset * 3600 * 1000);
+            // AOE时间为UTC-12
+            const aoeTime = new Date(now.getTime() - 12 * 3600 * 1000);
 
-            const hours = aoeTime.getUTCHours();
-            const minutes = aoeTime.getUTCMinutes().toString().padStart(2, '0');
-            const seconds = aoeTime.getUTCSeconds().toString().padStart(2, '0');
-            const ampm = hours >= 12 ? 'pm' : 'am';
-            const displayHours = (hours % 12 || 12).toString();
-
-            document.getElementById('time').textContent = `${displayHours.padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-
-            updateLocationTime("new-york", -5);
-            updateLocationTime("london", 0);
-            updateLocationTime("paris", 1);
-            updateLocationTime("beijing", 8);
-            updateLocationTime("tokyo", 9);
-        }
-
-        function updateDate() {
-            const now = new Date();
-            const aoeOffset = -12;
-            const aoeTime = new Date(now.getTime() + aoeOffset * 3600 * 1000);
-
-            const formattedDate = aoeTime.toLocaleDateString('en-US', {
+            // 格式化AOE时间
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+                timeZone: 'UTC'
+            };
+            const dateOptions = {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
-                day: 'numeric'
-            });
-            document.getElementById('date').textContent = formattedDate;
+                day: 'numeric',
+                timeZone: 'UTC'
+            };
+
+            document.getElementById('time').textContent = formatTime(aoeTime.toLocaleTimeString('en-US', timeOptions));
+            document.getElementById('date').textContent = aoeTime.toLocaleDateString('en-US', dateOptions);
+
+            // 更新各城市时间
+            updateLocationTime("new-york", "America/New_York");
+            updateLocationTime("london", "Europe/London");
+            updateLocationTime("paris", "Europe/Paris");
+            updateLocationTime("beijing", "Asia/Shanghai");
+            updateLocationTime("tokyo", "Asia/Tokyo");
         }
 
-        function updateLocationTime(locationId, utcOffset) {
+        function updateLocationTime(locationId, timeZone) {
             const now = new Date();
-            const localTime = new Date(now.getTime() + utcOffset * 3600 * 1000);
+            const options = {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true,
+                timeZone: timeZone
+            };
+            const dateOptions = {
+                month: 'short',
+                day: 'numeric',
+                timeZone: timeZone
+            };
 
-            const hours = localTime.getUTCHours().toString().padStart(2, '0');
-            const minutes = localTime.getUTCMinutes().toString().padStart(2, '0');
-            const ampm = localTime.getUTCHours() >= 12 ? 'pm' : 'am';
-            const displayHours = (localTime.getUTCHours() % 12 || 12).toString();
-            const formattedDate = localTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const timeString = formatTime(now.toLocaleTimeString('en-US', options));
+            const dateString = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById(locationId).textContent = `${timeString}, ${dateString}`;
+        }
 
-            document.getElementById(locationId).textContent = `${displayHours}:${minutes}${ampm}, ${formattedDate}`;
+        function formatTime(timeString) {
+            return timeString.toLowerCase();  // 将AM/PM转换为小写
         }
 
         function init() {
             updateTime();
-            updateDate();
             setInterval(updateTime, 1000);
         }
 
