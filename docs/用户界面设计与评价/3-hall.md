@@ -2,7 +2,7 @@
 
 ## 课程年度最佳原型殿堂
 
-> **一些同学在这门课程中获得了不错的评价，下面是他们的项目以及原型链接。**
+> **一些同学在这门课程中获得了不错的评价，下面是他们的项目以及原型链接。（排名不分先后）**
 
 <!-- ## 2024 秋  
 <table>
@@ -98,5 +98,23 @@
         <td style="text-align: center; font-weight: bold;vertical-align: middle;">时光宝藏</td>
         <td style="text-align: justify;vertical-align: middle;">让生活不再是单一的时间线索，而是一串串充满色彩的珍珠，我们渴望每一颗珍珠都能闪耀着独特的光芒。在这里，我们不仅仅是时间的管理者，更是生活的艺术家。通过智能化的辅助，每个人都能在日常的忙碌中找到那些隐藏的、值得珍惜的时刻。无论是规划一次难忘的旅行，还是安排一个愉快的周末聚会，甚至是在碎片化的时间中找到属于自己的小确幸。让时间管理变得简单而有趣，让每个人都能以最轻松愉快的方式享受生活的每一个瞬间。让我们一起探索这个多彩的世界，发现生活中的无限可能。</td>
         <td style="text-align: center;vertical-align: middle;"><a href="https://www.figma.com/proto/KPI4TicpesgklOQC3cujjO/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5?node-id=70-1618&p=f&t=QPtkgqtzuLSbQFiN-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=70%3A1618&show-proto-sidebar=1/" target="_blank">Figma</a></td>
+    </tr>
+</table>
+
+## 2021 秋  
+<table>
+    <tr>
+        <th style="width: 15%; text-align: center; font-weight: bold;">队的名</th>
+        <th style="width: 15%; text-align: center; font-weight: bold;">成员</th>
+        <th style="width: 15%; text-align: center; font-weight: bold;">作品名</th>
+        <th style="width: 50%; text-align: left; font-weight: bold;">简介</th>
+        <th style="width: 10%; text-align: center; font-weight: bold;">项目链接</th>
+    </tr>
+    <tr>
+        <td style="text-align: center;vertical-align: middle;">今天你干饭了吗</td>
+        <td style="text-align: center;vertical-align: middle;">张丹丹, 杨璐歌<br>畅紫涵, 张林</td>
+        <td style="text-align: center; font-weight: bold;vertical-align: middle;">FoodNotes</td>
+        <td style="text-align: justify;vertical-align: middle;">一款美食记录与推荐应用，旨在帮助用户记录和分享美食体验，形成个性化的美食笔记。用户不仅可以发布笔记至社区，与他人交流美食心得，还能浏览他人推荐，轻松解决“今天吃什么”的难题，提升用餐幸福感。</td>
+        <td style="text-align: center;vertical-align: middle;"><a href="https://modao.cc/app/vCCBwAFr48ukzUv5gPdR3#screen=skx9xtj48m7hu86" target="_blank">墨刀</a></td>
     </tr>
 </table>
